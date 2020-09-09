@@ -18,7 +18,6 @@ const answerBlock = query('.answer')
 
 function createQuestion () {
   questionBlock.innerHTML = ''
-  answerBlock.innerHTML = ''
   const n = getRandomInt(0, 11)
   const m = getRandomInt(0, 11)
   const calc = n + m
@@ -26,7 +25,7 @@ function createQuestion () {
   answerBlock.addEventListener('change', function (event) {
     compareAnswer(event.target.value, calc)
   })
-  answerBlock.innerHTML = ''
+  answerBlock.value = null
 }
 
 function compareAnswer (user, sum) {
