@@ -10,6 +10,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 // const buttonBlock = query('.button')
 const questionBlock = query(".question");
 const answerBlock = query(".answer");
