@@ -13,6 +13,7 @@ function getRandomInt(min, max) {
 // const buttonBlock = query('.button')
 const questionBlock = query(".question");
 const answerBlock = query(".answer");
+const feedbackBlock = query(".feedback")
 
 // buttonBlock.addEventListener('click', function (event) {
 //   createQuestion(n, m)
@@ -20,6 +21,7 @@ const answerBlock = query(".answer");
 
 function createQuestion() {
   answerBlock.value = null;
+  feedbackBlock.innerHTML = "";
   questionBlock.innerHTML = "";
   const n = getRandomInt(0, 11);
   const m = getRandomInt(0, 11);
@@ -31,25 +33,28 @@ function createQuestion() {
   // answerBlock.value = null
 }
 
-answerBlock.addEventListener("change", function (e) {
+answerBlock.addEventListener("change", async function (e) {
   const ans = e.target.value;
   if (ans == calc) {
     console.log("got it");
+    feedbackBlock.innerHTML = '<div>You got it right!</div>'
+    await sleep(2000);
     createQuestion();
   } else {
     console.log("nope");
+    feedbackBlock.innerHTML = '<div>Incorrect, please try again</div>'
   }
 });
 
-function compareAnswer(user, sum) {
-  console.log("user: " + user);
-  console.log("sum: " + sum);
-  if (user == sum) {
-    console.log("yay");
-  } else {
-    console.log("nay");
-  }
-}
+// function compareAnswer(user, sum) {
+//   console.log("user: " + user);
+//   console.log("sum: " + sum);
+//   if (user == sum) {
+//     console.log("yay");
+//   } else {
+//     console.log("nay");
+//   }
+// }
 
 document.addEventListener("DOMContentLoaded", function () {
   createQuestion();
