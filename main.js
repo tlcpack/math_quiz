@@ -16,17 +16,33 @@ const answerBlock = query('.answer')
 //   createQuestion(n, m)
 // })
 
+document.addEventListener('DOMContentLoaded', function() {
+  let calc = 0
 function createQuestion () {
+  answerBlock.value = null
   questionBlock.innerHTML = ''
   const n = getRandomInt(0, 11)
   const m = getRandomInt(0, 11)
-  const calc = n + m
+  calc = n + m
   questionBlock.innerHTML = `${n} + ${m} = `
-  answerBlock.addEventListener('change', function (event) {
-    compareAnswer(event.target.value, calc)
-  })
-  answerBlock.value = null
+  // answerBlock.addEventListener('change', function (event) {
+  //   compareAnswer(event.target.value, calc)
+  // })
+  // answerBlock.value = null
 }
+
+createQuestion()
+
+answerBlock.addEventListener('change', function(e) {
+  const ans = e.target.value
+  if (ans == calc) {
+    console.log('got it')
+    createQuestion()
+  }
+  else {
+    console.log('nope')
+  }
+})
 
 function compareAnswer (user, sum) {
   console.log('user: ' + user)
@@ -37,3 +53,4 @@ function compareAnswer (user, sum) {
     console.log('nay')
   }
 }
+})
