@@ -8,27 +8,30 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
-const buttonBlock = query('.button')
-let questionBlock = query('.question')
-let answerBlock = query('.answer')
+// const buttonBlock = query('.button')
+const questionBlock = query('.question')
+const answerBlock = query('.answer')
 
 // buttonBlock.addEventListener('click', function (event) {
 //   createQuestion(n, m)
 // })
 
-answerBlock.addEventListener('change', function (event) {
-  compareAnswer(event.target.value)
-})
-
 function createQuestion () {
   questionBlock.innerHTML = ''
+  answerBlock.innerHTML = ''
   const n = getRandomInt(0, 11)
   const m = getRandomInt(0, 11)
-  const sum = n + m
+  const calc = n + m
   questionBlock.innerHTML = `${n} + ${m} = `
+  answerBlock.addEventListener('change', function (event) {
+    compareAnswer(event.target.value, calc)
+  })
+  answerBlock.innerHTML = ''
 }
 
-function compareAnswer (user) {
+function compareAnswer (user, sum) {
+  console.log('user: ' + user)
+  console.log('sum: ' + sum)
   if (user == sum) {
     console.log('yay')
   } else {
