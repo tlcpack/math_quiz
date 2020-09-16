@@ -42,8 +42,8 @@ function createSubtractionQuestion() {
   answerBlock.value = null;
   feedbackBlock.innerHTML = "";
   questionBlock.innerHTML = "";
-  const n = getRandomInt(0, 11);
-  const m = getRandomInt(0, 11);
+  const n = getRandomInt(2, 15);
+  const m = getRandomInt(0, n);
   calc = n - m;
   questionBlock.innerHTML = `${n} - ${m} = `;
 }
