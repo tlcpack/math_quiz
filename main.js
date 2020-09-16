@@ -22,7 +22,7 @@ const feedbackBlock = query(".feedback")
 //   createQuestion(n, m)
 // })
 
-function createQuestion() {
+function createAdditionQuestion() {
   answerBlock.value = null;
   feedbackBlock.innerHTML = "";
   questionBlock.innerHTML = "";
@@ -36,13 +36,27 @@ function createQuestion() {
   // answerBlock.value = null
 }
 
+function createSubtractionQuestion() {
+  answerBlock.value = null;
+  feedbackBlock.innerHTML = "";
+  questionBlock.innerHTML = "";
+  const n = getRandomInt(0, 11);
+  const m = getRandomInt(0, 11);
+  calc = n - m;
+  questionBlock.innerHTML = `${n} - ${m} = `;
+  // answerBlock.addEventListener('change', function (event) {
+  //   compareAnswer(event.target.value, calc)
+  // })
+  // answerBlock.value = null
+}
+
 answerBlock.addEventListener("change", async function (e) {
   const ans = e.target.value;
   if (ans == calc) {
     console.log("got it");
     feedbackBlock.innerHTML = '<div>You got it right!</div>'
     await sleep(2000);
-    createQuestion();
+    createAdditionQuestion();
   } else {
     console.log("nope");
     feedbackBlock.innerHTML = '<div>Incorrect, please try again</div>'
@@ -60,5 +74,5 @@ answerBlock.addEventListener("change", async function (e) {
 // }
 
 document.addEventListener("DOMContentLoaded", function () {
-  createQuestion();
+  createAdditionQuestion();
 });
