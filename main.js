@@ -11,18 +11,22 @@ function getRandomInt(min, max) {
 }
 
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 // const buttonBlock = query('.button')
 const questionBlock = query(".question");
 const answerBlock = query(".answer");
-const feedbackBlock = query(".feedback")
-const additionButton = query(".additionButton")
-const subtractionButton = query(".subtractionButton")
+const feedbackBlock = query(".feedback");
+const additionButton = query(".additionButton");
+const subtractionButton = query(".subtractionButton");
 
-// buttonBlock.addEventListener('click', function (event) {
-//   createQuestion(n, m)
-// })
+additionButton.addEventListener("click", function (event) {
+  createAdditionQuestion();
+});
+
+subtractionButton.addEventListener("click", function (event) {
+  createSubtractionQuestion();
+});
 
 function createAdditionQuestion() {
   answerBlock.value = null;
@@ -32,10 +36,6 @@ function createAdditionQuestion() {
   const m = getRandomInt(0, 11);
   calc = n + m;
   questionBlock.innerHTML = `${n} + ${m} = `;
-  // answerBlock.addEventListener('change', function (event) {
-  //   compareAnswer(event.target.value, calc)
-  // })
-  // answerBlock.value = null
 }
 
 function createSubtractionQuestion() {
@@ -46,22 +46,44 @@ function createSubtractionQuestion() {
   const m = getRandomInt(0, 11);
   calc = n - m;
   questionBlock.innerHTML = `${n} - ${m} = `;
-  // answerBlock.addEventListener('change', function (event) {
-  //   compareAnswer(event.target.value, calc)
-  // })
-  // answerBlock.value = null
 }
 
 answerBlock.addEventListener("change", async function (e) {
   const ans = e.target.value;
-  if (ans == calc) {
-    console.log("got it");
-    feedbackBlock.innerHTML = '<div>You got it right!</div>'
-    await sleep(2000);
-    createAdditionQuestion();
-  } else {
-    console.log("nope");
-    feedbackBlock.innerHTML = '<div>Incorrect, please try again</div>'
+  if (questionBlock.textContent.includes("+")) {
+    if (ans == calc) {
+      console.log("got it - add");
+      feedbackBlock.innerHTML = "<div>You got it right!</div>";
+      additionButton.disabled = true
+      subtractionButton.disabled = true
+      await sleep(2000);
+      additionButton.disabled = false
+      subtractionButton.disabled = false
+      createAdditionQuestion();
+      return;
+    } else {
+      console.log("nope - add");
+      feedbackBlock.innerHTML = "<div>Incorrect, please try again</div>";
+      await sleep(2000);
+      feedbackBlock.innerHTML = ""
+    }
+  }
+  if (questionBlock.textContent.includes("-")) {
+    if (ans == calc) {
+      console.log("got it - sub");
+      feedbackBlock.innerHTML = "<div>You got it right!</div>";
+      additionButton.disabled = true
+      subtractionButton.disabled = true
+      await sleep(2000);
+      additionButton.disabled = false
+      subtractionButton.disabled = false
+      createSubtractionQuestion();
+    } else {
+      console.log("nope - sub");
+      feedbackBlock.innerHTML = "<div>Incorrect, please try again</div>";
+      await sleep(2000);
+      feedbackBlock.innerHTML = ""
+    }
   }
 });
 
