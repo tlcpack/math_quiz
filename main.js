@@ -17,6 +17,8 @@ function sleep(ms) {
 const questionBlock = query(".question");
 const answerBlock = query(".answer");
 const feedbackBlock = query(".feedback")
+const additionButton = query(".additionButton")
+const subtractionButton = query(".subtractionButton")
 
 // buttonBlock.addEventListener('click', function (event) {
 //   createQuestion(n, m)
