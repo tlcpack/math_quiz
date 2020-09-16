@@ -3,7 +3,7 @@
 }
 
 body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(-45deg, lightskyblue, lightyellow, lightcoral, lightpink);
 	background-size: 400% 400%;
 	animation: gradient 20s ease infinite;
 }
@@ -23,28 +23,26 @@ body {
 button {
     text-transform: uppercase;
     background: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border: 4px solid;
-    border-radius: 6px;
+    border-radius: 8px;
     display: inline-block;
     transition: all 0.3s ease 0s;
-    margin: 1.5rem;
+    margin: 2rem;
     font-size: larger;
 }
 
 button:hover {
-    color: lightseagreen !important;
     border-radius: 50px;
-    border-color: lightseagreen !important;
     transition: all 0.3s ease 0s;
 }
 
 input {
     border: 4px solid;
     border-radius: 10px;
-    outline: none;
     width: 180px;
     height: 50px;
+    outline: none;
 }
 
 .container {
@@ -62,7 +60,15 @@ input {
     border-color: lightgreen !important;
 }
 
+.additionButton:hover {
+    color:darkgreen;
+}
+
 .subtractionButton {
     color: lightskyblue;
     border-color: lightskyblue !important;
+}
+
+.subtractionButton:hover {
+    color: darkblue;
 }
