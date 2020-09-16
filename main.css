@@ -1,0 +1,31 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+button {
+    text-transform: uppercase;
+    background: #ffffff;
+    padding: 20px;
+    border: 4px solid;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    margin: 1rem;
+}
+
+button:hover {
+    color: lightseagreen !important;
+    border-radius: 50px;
+    border-color: lightseagreen !important;
+    transition: all 0.3s ease 0s;
+}
+
+.additionButton {
+    color: lightgreen;
+    border-color: lightgreen !important;
+}
+
+.subtractionButton {
+    color: lightskyblue;
+    border-color: lightskyblue !important;
+}
