@@ -22,10 +22,6 @@ function sayHi(name) {
   helloBlock.innerHTML = "";
 }
 
-// const playerName = getInputValue();
-
-
-
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -35,8 +31,6 @@ function getRandomInt(min, max) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-// const buttonBlock = query('.button')
-
 
 additionButton.addEventListener("click", function (event) {
   createAdditionQuestion();
@@ -104,18 +98,6 @@ answerBlock.addEventListener("change", async function (e) {
     }
   }
 });
-
-// function compareAnswer(user, sum) {
-//   console.log("user: " + user);
-//   console.log("sum: " + sum);
-//   if (user == sum) {
-//     console.log("yay");
-//   } else {
-//     console.log("nay");
-//   }
-// }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   createAdditionQuestion();
