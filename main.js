@@ -2,7 +2,29 @@ function query(selector) {
   return document.querySelector(selector);
 }
 
+const questionBlock = query(".question");
+const answerBlock = query(".answer");
+const feedbackBlock = query(".feedback");
+const additionButton = query(".additionButton");
+const subtractionButton = query(".subtractionButton");
+const nameBlock = query(".name");
+const helloBlock = query(".hello")
+
 let calc = 0;
+
+function getInputValue(){
+  const inputVal = document.getElementById("myInput").value;
+  sayHi(inputVal);
+}
+
+function sayHi(name) {
+  nameBlock.innerHTML = `<div>Welcome, ${name}</div>`;
+  helloBlock.innerHTML = "";
+}
+
+// const playerName = getInputValue();
+
+
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -14,11 +36,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 // const buttonBlock = query('.button')
-const questionBlock = query(".question");
-const answerBlock = query(".answer");
-const feedbackBlock = query(".feedback");
-const additionButton = query(".additionButton");
-const subtractionButton = query(".subtractionButton");
+
 
 additionButton.addEventListener("click", function (event) {
   createAdditionQuestion();
@@ -96,6 +114,8 @@ answerBlock.addEventListener("change", async function (e) {
 //     console.log("nay");
 //   }
 // }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   createAdditionQuestion();
