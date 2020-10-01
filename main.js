@@ -53,7 +53,7 @@ answerBlock.addEventListener("change", async function (e) {
   if (questionBlock.textContent.includes("+")) {
     if (ans == calc) {
       console.log("got it - add");
-      feedbackBlock.innerHTML = "<div>You got it right!</div>";
+      feedbackBlock.innerHTML = "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
       additionButton.disabled = true
       subtractionButton.disabled = true
       await sleep(2000);
@@ -63,7 +63,7 @@ answerBlock.addEventListener("change", async function (e) {
       return;
     } else {
       console.log("nope - add");
-      feedbackBlock.innerHTML = "<div>Incorrect, please try again</div>";
+      feedbackBlock.innerHTML = "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
       await sleep(2000);
       feedbackBlock.innerHTML = ""
     }
@@ -71,7 +71,7 @@ answerBlock.addEventListener("change", async function (e) {
   if (questionBlock.textContent.includes("-")) {
     if (ans == calc) {
       console.log("got it - sub");
-      feedbackBlock.innerHTML = "<div>You got it right!</div>";
+      feedbackBlock.innerHTML = "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
       additionButton.disabled = true
       subtractionButton.disabled = true
       await sleep(2000);
@@ -80,7 +80,7 @@ answerBlock.addEventListener("change", async function (e) {
       createSubtractionQuestion();
     } else {
       console.log("nope - sub");
-      feedbackBlock.innerHTML = "<div>Incorrect, please try again</div>";
+      feedbackBlock.innerHTML = "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
       await sleep(2000);
       feedbackBlock.innerHTML = ""
     }
