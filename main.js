@@ -8,11 +8,11 @@ const feedbackBlock = query(".feedback");
 const additionButton = query(".additionButton");
 const subtractionButton = query(".subtractionButton");
 const nameBlock = query(".name");
-const helloBlock = query(".hello")
+const helloBlock = query(".hello");
 
 let calc = 0;
 
-function getInputValue(){
+function getInputValue() {
   const inputVal = document.getElementById("myInput").value;
   sayHi(inputVal);
 }
@@ -60,41 +60,49 @@ function createSubtractionQuestion() {
   questionBlock.innerHTML = `${n} - ${m} = `;
 }
 
-answerBlock.addEventListener("change", async function (e) {
-  const ans = e.target.value;
-  if (questionBlock.textContent.includes("+")) {
-    if (ans == calc) {
-      console.log("got it - add");
-      feedbackBlock.innerHTML = "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
-      additionButton.disabled = true
-      subtractionButton.disabled = true
-      await sleep(2000);
-      additionButton.disabled = false
-      subtractionButton.disabled = false
-      createAdditionQuestion();
-      return;
-    } else {
-      console.log("nope - add");
-      feedbackBlock.innerHTML = "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
-      await sleep(2000);
-      feedbackBlock.innerHTML = ""
+answerBlock.addEventListener("keypress", async function (e) {
+  if (e.key === "Enter") {
+    const ans = e.target.value;
+    if (questionBlock.textContent.includes("+")) {
+      if (ans == calc) {
+        console.log("got it - add");
+        feedbackBlock.innerHTML =
+          "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        additionButton.disabled = true;
+        subtractionButton.disabled = true;
+        await sleep(2000);
+        additionButton.disabled = false;
+        subtractionButton.disabled = false;
+        createAdditionQuestion();
+        return;
+      } else {
+        console.log("nope - add");
+        feedbackBlock.innerHTML =
+          "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
+        await sleep(2000);
+        feedbackBlock.innerHTML = "";
+        answerBlock.value = null;
+      }
     }
-  }
-  if (questionBlock.textContent.includes("-")) {
-    if (ans == calc) {
-      console.log("got it - sub");
-      feedbackBlock.innerHTML = "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
-      additionButton.disabled = true
-      subtractionButton.disabled = true
-      await sleep(2000);
-      additionButton.disabled = false
-      subtractionButton.disabled = false
-      createSubtractionQuestion();
-    } else {
-      console.log("nope - sub");
-      feedbackBlock.innerHTML = "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
-      await sleep(2000);
-      feedbackBlock.innerHTML = ""
+    if (questionBlock.textContent.includes("-")) {
+      if (ans == calc) {
+        console.log("got it - sub");
+        feedbackBlock.innerHTML =
+          "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        additionButton.disabled = true;
+        subtractionButton.disabled = true;
+        await sleep(2000);
+        additionButton.disabled = false;
+        subtractionButton.disabled = false;
+        createSubtractionQuestion();
+      } else {
+        console.log("nope - sub");
+        feedbackBlock.innerHTML =
+          "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
+        await sleep(2000);
+        feedbackBlock.innerHTML = "";
+        answerBlock.value = null;
+      }
     }
   }
 });
