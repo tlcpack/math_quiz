@@ -10,6 +10,7 @@ const subtractionButton = query(".subtractionButton");
 const nameBlock = query(".name");
 const helloBlock = query(".hello");
 const askNameBlock = query(".askname");
+const mathContainerBlock = document.getElementById("mathContainer")
 
 let calc = 0;
 let name = "";
@@ -19,19 +20,19 @@ function getInputValue() {
   sayHi(inputVal);
 }
 
-function sayHi(name) {
-
-  nameBlock.innerHTML = `<div>Welcome, ${name}</div>`;
-  helloBlock.innerHTML = "";
-  askNameBlock.innerHTML = "";
-}
-
 askNameBlock.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     name = e.target.value;
     sayHi(name);
   }
 });
+
+function sayHi(name) {
+  mathContainerBlock.classList.remove("hidden");
+  askNameBlock.classList.add("hidden");
+  nameBlock.innerHTML = `<div>Welcome, ${name}</div>`;
+  askNameBlock.innerHTML = "";
+}
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);

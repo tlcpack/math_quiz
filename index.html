@@ -17,13 +17,9 @@
     <h3 style="text-align: center; font-size: 36px">Math!</h3>
 
     <div class="container">
-      <!-- <div class="hello">
-        <input type="text" placeholder="Type something..." id="myInput" />
-        <button type="button" onclick="getInputValue();">Get Value</button>
-      </div> -->
-      <input onblur="this.focus()" class="askname" />
+      <input onblur="this.focus()" class="askname" placeholder="Enter your name"/>
       <div class="name"></div>
-      <div class="mathContainer hidden">
+      <div id="mathContainer" class="hidden">
         <div class="question"></div>
         <input onblur="this.focus()" class="answer" />
         <div class="feedback"></div>
