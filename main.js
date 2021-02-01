@@ -10,6 +10,7 @@ const subtractionButton = query(".subtractionButton");
 const nameBlock = query(".name");
 const helloBlock = query(".hello");
 const askNameBlock = query(".askname");
+const consecutive = query(".consecutive");
 const mathContainerBlock = document.getElementById("mathContainer")
 
 let calc = 0;
@@ -29,6 +30,7 @@ askNameBlock.addEventListener("keypress", function (e) {
 
 function sayHi(name) {
   mathContainerBlock.classList.remove("hidden");
+  consecutive.classList.remove("hidden");
   askNameBlock.classList.add("hidden");
   nameBlock.innerHTML = `<div>Welcome, ${name}</div>`;
   askNameBlock.innerHTML = "";
@@ -80,6 +82,7 @@ answerBlock.addEventListener("keypress", async function (e) {
         console.log("got it - add");
         feedbackBlock.innerHTML =
           "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        consecutive.innerHTML += "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:25px;height:25px;'>";
         additionButton.disabled = true;
         subtractionButton.disabled = true;
         await sleep(2000);
