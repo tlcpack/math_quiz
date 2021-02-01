@@ -54,6 +54,7 @@ input {
 
 .name {
     font-size: x-large;
+    margin-bottom: 1rem;
 }
 
 .container {
