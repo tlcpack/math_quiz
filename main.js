@@ -13,8 +13,11 @@ const askNameBlock = query(".askname");
 const consecutive = query(".consecutive");
 const mathContainerBlock = document.getElementById("mathContainer")
 
+const heart = "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:35px;height:35px;'>";
+
 let calc = 0;
 let name = "";
+let correct = 0;
 
 function getInputValue() {
   const inputVal = document.getElementById("myInput").value;
@@ -79,19 +82,19 @@ answerBlock.addEventListener("keypress", async function (e) {
     const ans = e.target.value;
     if (questionBlock.textContent.includes("+")) {
       if (ans == calc) {
-        console.log("got it - add");
+        // console.log("right - add");
+        correct += 1;
         feedbackBlock.innerHTML =
           "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
-        consecutive.innerHTML += "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:25px;height:25px;'>";
+        correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
         additionButton.disabled = true;
         subtractionButton.disabled = true;
         await sleep(2000);
         additionButton.disabled = false;
         subtractionButton.disabled = false;
         createAdditionQuestion();
-        return;
       } else {
-        console.log("nope - add");
+        // console.log("nope - add");
         feedbackBlock.innerHTML =
           "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
         await sleep(2000);
@@ -101,9 +104,11 @@ answerBlock.addEventListener("keypress", async function (e) {
     }
     if (questionBlock.textContent.includes("-")) {
       if (ans == calc) {
-        console.log("got it - sub");
+        // console.log("got it - sub");
+        correct += 1;
         feedbackBlock.innerHTML =
           "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
         additionButton.disabled = true;
         subtractionButton.disabled = true;
         await sleep(2000);
@@ -111,7 +116,7 @@ answerBlock.addEventListener("keypress", async function (e) {
         subtractionButton.disabled = false;
         createSubtractionQuestion();
       } else {
-        console.log("nope - sub");
+        // console.log("nope - sub");
         feedbackBlock.innerHTML =
           "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
         await sleep(2000);
