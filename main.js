@@ -14,6 +14,8 @@ const consecutive = query(".consecutive");
 const mathContainerBlock = document.getElementById("mathContainer")
 
 const heart = "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:35px;height:35px;'>";
+const check = "<img src='https://img.icons8.com/cotton/2x/checkmark.png'>";
+const sad = "<img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'>"
 
 let calc = 0;
 let name = "";
@@ -84,8 +86,7 @@ answerBlock.addEventListener("keypress", async function (e) {
       if (ans == calc) {
         // console.log("right - add");
         correct += 1;
-        feedbackBlock.innerHTML =
-          "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        feedbackBlock.innerHTML = check;
         correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
         additionButton.disabled = true;
         subtractionButton.disabled = true;
@@ -95,8 +96,7 @@ answerBlock.addEventListener("keypress", async function (e) {
         createAdditionQuestion();
       } else {
         // console.log("nope - add");
-        feedbackBlock.innerHTML =
-          "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
+        feedbackBlock.innerHTML = sad;
         await sleep(2000);
         feedbackBlock.innerHTML = "";
         answerBlock.value = null;
@@ -106,8 +106,7 @@ answerBlock.addEventListener("keypress", async function (e) {
       if (ans == calc) {
         // console.log("got it - sub");
         correct += 1;
-        feedbackBlock.innerHTML =
-          "<div><img src='https://img.icons8.com/cotton/2x/checkmark.png'></div>";
+        feedbackBlock.innerHTML = check;
         correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
         additionButton.disabled = true;
         subtractionButton.disabled = true;
@@ -117,8 +116,7 @@ answerBlock.addEventListener("keypress", async function (e) {
         createSubtractionQuestion();
       } else {
         // console.log("nope - sub");
-        feedbackBlock.innerHTML =
-          "<div><img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'></div>";
+        feedbackBlock.innerHTML = sad;
         await sleep(2000);
         feedbackBlock.innerHTML = "";
         answerBlock.value = null;
