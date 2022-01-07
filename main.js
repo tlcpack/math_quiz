@@ -12,6 +12,7 @@ const helloBlock = query(".hello");
 const askNameBlock = query(".askname");
 const consecutive = query(".consecutive");
 const mathContainerBlock = document.getElementById("mathContainer")
+const questionTypeBlock = query(".questionType");
 
 
 const heart = "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:35px;height:35px;'>";
@@ -70,10 +71,14 @@ function enableButtons() {
   subtractionButton.disabled = false;
 }
 
-function createAdditionQuestion() {
+function blankify() {
   answerBlock.value = null;
   feedbackBlock.innerHTML = "";
   questionBlock.innerHTML = "";
+}
+
+function createAdditionQuestion() {
+  blankify();
   const n = getRandomInt(0, 21);
   const m = getRandomInt(0, 21);
   calc = n + m;
@@ -81,9 +86,7 @@ function createAdditionQuestion() {
 }
 
 function createSubtractionQuestion() {
-  answerBlock.value = null;
-  feedbackBlock.innerHTML = "";
-  questionBlock.innerHTML = "";
+  blankify();
   const n = getRandomInt(2, 15);
   const m = getRandomInt(0, n);
   calc = n - m;
@@ -93,15 +96,17 @@ function createSubtractionQuestion() {
 answerBlock.addEventListener("keypress", async function (e) {
   if (e.key === "Enter") {
     const ans = e.target.value;
-    
+    nameBlock.classList.add('hidden');
       if (ans == calc) {
         // console.log("right - add");
         correct += 1;
+        questionTypeBlock.classList.add('hidden');
         feedbackBlock.innerHTML = check;
         correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
         disableButtons();
         await sleep(2000);
         enableButtons();
+        questionTypeBlock.classList.remove('hidden');
         questionBlock.textContent.includes("+") ? createAdditionQuestion() : createSubtractionQuestion()
       } else {
         // console.log("nope - add");

@@ -68,19 +68,21 @@ input {
 }
 
 .additionButton {
-    color: lightgreen;
+    color: white;
+    background-color: darkgreen;
     border-color: lightgreen !important;
 }
 
-.additionButton:hover {
-    color:darkgreen;
-}
+/* .additionButton:hover {
+    color:darkgreen; 
+} */
 
 .subtractionButton {
-    color: lightskyblue;
+    color: white;
+    background-color: darkblue;
     border-color: lightskyblue !important;
 }
 
-.subtractionButton:hover {
+/* .subtractionButton:hover {
     color: darkblue;
-}
+} */
