@@ -13,6 +13,7 @@ const askNameBlock = query(".askname");
 const consecutive = query(".consecutive");
 const mathContainerBlock = document.getElementById("mathContainer")
 
+
 const heart = "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:35px;height:35px;'>";
 const check = "<img src='https://img.icons8.com/cotton/2x/checkmark.png'>";
 const sad = "<img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'>"
@@ -59,12 +60,22 @@ subtractionButton.addEventListener("click", function (event) {
   createSubtractionQuestion();
 });
 
+function disableButtons() {
+  additionButton.disabled = true;
+  subtractionButton.disabled = true;
+}
+
+function enableButtons() {
+  additionButton.disabled = false;
+  subtractionButton.disabled = false;
+}
+
 function createAdditionQuestion() {
   answerBlock.value = null;
   feedbackBlock.innerHTML = "";
   questionBlock.innerHTML = "";
-  const n = getRandomInt(0, 11);
-  const m = getRandomInt(0, 11);
+  const n = getRandomInt(0, 21);
+  const m = getRandomInt(0, 21);
   calc = n + m;
   questionBlock.innerHTML = `${n} + ${m} = `;
 }
@@ -82,18 +93,16 @@ function createSubtractionQuestion() {
 answerBlock.addEventListener("keypress", async function (e) {
   if (e.key === "Enter") {
     const ans = e.target.value;
-    if (questionBlock.textContent.includes("+")) {
+    
       if (ans == calc) {
         // console.log("right - add");
         correct += 1;
         feedbackBlock.innerHTML = check;
         correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
-        additionButton.disabled = true;
-        subtractionButton.disabled = true;
+        disableButtons();
         await sleep(2000);
-        additionButton.disabled = false;
-        subtractionButton.disabled = false;
-        createAdditionQuestion();
+        enableButtons();
+        questionBlock.textContent.includes("+") ? createAdditionQuestion() : createSubtractionQuestion()
       } else {
         // console.log("nope - add");
         feedbackBlock.innerHTML = sad;
@@ -101,27 +110,6 @@ answerBlock.addEventListener("keypress", async function (e) {
         feedbackBlock.innerHTML = "";
         answerBlock.value = null;
       }
-    }
-    if (questionBlock.textContent.includes("-")) {
-      if (ans == calc) {
-        // console.log("got it - sub");
-        correct += 1;
-        feedbackBlock.innerHTML = check;
-        correct > 0 ? consecutive.innerHTML = `Correct answers = ${correct}: </br></br>` + heart.repeat(correct) : ""
-        additionButton.disabled = true;
-        subtractionButton.disabled = true;
-        await sleep(2000);
-        additionButton.disabled = false;
-        subtractionButton.disabled = false;
-        createSubtractionQuestion();
-      } else {
-        // console.log("nope - sub");
-        feedbackBlock.innerHTML = sad;
-        await sleep(2000);
-        feedbackBlock.innerHTML = "";
-        answerBlock.value = null;
-      }
-    }
   }
 });
 
