@@ -79,8 +79,8 @@ function blankify() {
 
 function createAdditionQuestion() {
   blankify();
-  const n = getRandomInt(0, 21);
-  const m = getRandomInt(0, 21);
+  const n = getRandomInt(0, 51);
+  const m = getRandomInt(0, 41);
   calc = n + m;
   questionBlock.innerHTML = `${n} + ${m} = `;
 }
