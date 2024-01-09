@@ -7,6 +7,7 @@ const answerBlock = query(".answer");
 const feedbackBlock = query(".feedback");
 const additionButton = query(".additionButton");
 const subtractionButton = query(".subtractionButton");
+const multiplicationButton = query(".multiplicationButton");
 const nameBlock = query(".name");
 const helloBlock = query(".hello");
 const askNameBlock = query(".askname");
@@ -60,6 +61,9 @@ additionButton.addEventListener("click", function (event) {
 subtractionButton.addEventListener("click", function (event) {
   createSubtractionQuestion();
 });
+multiplicationButton.addEventListener("click", function (event) {
+  createMultiplicationQuestion();
+});
 
 function disableButtons() {
   additionButton.disabled = true;
@@ -91,6 +95,13 @@ function createSubtractionQuestion() {
   const m = getRandomInt(0, n);
   calc = n - m;
   questionBlock.innerHTML = `${n} - ${m} = `;
+}
+function createMultiplicationQuestion() {
+  blankify();
+  const n = getRandomInt(0, 12);
+  const m = getRandomInt(0, n);
+  calc = n * m;
+  questionBlock.innerHTML = `${n} x ${m} = `;
 }
 
 answerBlock.addEventListener("keypress", async function (e) {

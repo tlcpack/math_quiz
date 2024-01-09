@@ -82,6 +82,11 @@ input {
     background-color: darkblue;
     border-color: lightskyblue !important;
 }
+.multiplicationButton {
+    color: white;
+    background-color: darksalmon;
+    border-color: pink !important;
+}
 
 /* .subtractionButton:hover {
     color: darkblue;
