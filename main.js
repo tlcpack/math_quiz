@@ -98,8 +98,8 @@ function createSubtractionQuestion() {
 }
 function createMultiplicationQuestion() {
   blankify();
-  const n = getRandomInt(0, 12);
-  const m = getRandomInt(0, n);
+  const n = getRandomInt(2, 12);
+  const m = getRandomInt(2, n);
   calc = n * m;
   questionBlock.innerHTML = `${n} x ${m} = `;
 }
@@ -118,7 +118,8 @@ answerBlock.addEventListener("keypress", async function (e) {
         await sleep(2000);
         enableButtons();
         questionTypeBlock.classList.remove('hidden');
-        questionBlock.textContent.includes("+") ? createAdditionQuestion() : createSubtractionQuestion()
+        questionBlock.textContent.includes("x") ? createMultiplicationQuestion() 
+          : questionBlock.textContent.includes("+") ? createAdditionQuestion() : createSubtractionQuestion()
       } else {
         // console.log("nope - add");
         feedbackBlock.innerHTML = sad;
