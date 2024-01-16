@@ -87,6 +87,11 @@ input {
     background-color: darksalmon;
     border-color: pink !important;
 }
+.divisionButton {
+    color: white;
+    background-color: brown;
+    border-color: pink !important;
+}
 
 /* .subtractionButton:hover {
     color: darkblue;
