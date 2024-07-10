@@ -3,9 +3,9 @@
 }
 
 body {
-	background: linear-gradient(-45deg, lightskyblue, lightyellow, lightcoral, lightpink);
-	background-size: 400% 400%;
-	animation: gradient 20s ease infinite;
+	background: linear-gradient(-45deg, lightskyblue, lightpink, aquamarine);
+	background-size: 700% 700%;
+	animation: gradient 3s ease infinite;
 }
 
 @keyframes gradient {
@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-    border-radius: 50px;
+    border-radius: 100px;
     transition: all 0.3s ease 0s;
 }
 
@@ -69,8 +69,8 @@ input {
 
 .additionButton {
     color: white;
-    background-color: darkgreen;
-    border-color: lightgreen !important;
+    background-color: pink;
+    border-color: salmon;
 }
 
 /* .additionButton:hover {
@@ -79,18 +79,18 @@ input {
 
 .subtractionButton {
     color: white;
-    background-color: darkblue;
-    border-color: lightskyblue !important;
+    background-color: cyan;
+    border-color: cornflowerblue;
 }
 .multiplicationButton {
     color: white;
-    background-color: darksalmon;
-    border-color: pink !important;
+    background-color: cornflowerblue;
+    border-color: turquoise;
 }
 .divisionButton {
     color: white;
-    background-color: brown;
-    border-color: pink !important;
+    background-color: teal;
+    border-color: aquamarine;
 }
 
 /* .subtractionButton:hover {

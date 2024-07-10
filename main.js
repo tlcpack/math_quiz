@@ -87,8 +87,8 @@ function blankify() {
 
 function createAdditionQuestion() {
   blankify();
-  const n = getRandomInt(0, 51);
-  const m = getRandomInt(0, 41);
+  const n = getRandomInt(0, 10);
+  const m = getRandomInt(0, 5);
   calc = n + m;
   questionBlock.innerHTML = `${n} + ${m} = `;
 }
@@ -102,7 +102,7 @@ function createSubtractionQuestion() {
 }
 function createMultiplicationQuestion() {
   blankify();
-  const n = getRandomInt(2, 12);
+  const n = getRandomInt(2, 13);
   const m = getRandomInt(2, n);
   calc = n * m;
   questionBlock.innerHTML = `${n} x ${m} = `;
@@ -111,15 +111,8 @@ function createDivisionQuestion() {
   blankify();
   const n = getRandomInt(2, 12);
   const m = getRandomInt(2, n);
-  // calc = n / m;
-  if (n % m == 0) {
-    calc = n / m;
-  }
-  else {
-    createDivisionQuestion()
-  }
-
-  questionBlock.innerHTML = `${n} / ${m} = `;
+  calc = n * m;
+  questionBlock.innerHTML = `${calc} / ${n} = `;
 }
 
 answerBlock.addEventListener("keypress", async function (e) {
@@ -127,7 +120,6 @@ answerBlock.addEventListener("keypress", async function (e) {
     const ans = e.target.value;
     nameBlock.classList.add('hidden');
       if (ans == calc) {
-        // console.log("right - add");
         correct += 1;
         questionTypeBlock.classList.add('hidden');
         feedbackBlock.innerHTML = check;
@@ -139,7 +131,6 @@ answerBlock.addEventListener("keypress", async function (e) {
         questionBlock.textContent.includes("x") ? createMultiplicationQuestion() 
           : questionBlock.textContent.includes("+") ? createAdditionQuestion() : createSubtractionQuestion()
       } else {
-        // console.log("nope - add");
         feedbackBlock.innerHTML = sad;
         await sleep(2000);
         feedbackBlock.innerHTML = "";
