@@ -18,7 +18,7 @@ const questionTypeBlock = query(".questionType");
 
 
 const heart = "<img src='https://cdn.iconscout.com/icon/free/png-256/heart-56-76703.png' style='width:35px;height:35px;'>";
-const check = "<img src='https://img.icons8.com/cotton/2x/checkmark.png'>";
+const check = "<img src='https://res.cloudinary.com/teepublic/image/private/s--DmUgCWHr--/c_crop,x_10,y_10/c_fit,w_1609/c_crop,g_north_west,h_1038,w_1038,x_285,y_18/l_upload:v1565806151:production:blanks:vdbwo35fw6qtflw9kezw/fl_layer_apply,g_north_west,x_-111,y_-111/b_rgb:2a2554/c_limit,f_auto,h_630,q_auto:good:420,w_630/v1610057757/production/designs/18296382_0.jpg'>";
 const sad = "<img src='https://cdn.iconscout.com/icon/free/png-256/sad-emoji-17-894764.png'>"
 
 let calc = 0;
@@ -87,8 +87,8 @@ function blankify() {
 
 function createAdditionQuestion() {
   blankify();
-  const n = getRandomInt(0, 10);
-  const m = getRandomInt(0, 5);
+  const n = getRandomInt(0, 20);
+  const m = getRandomInt(0, 25);
   calc = n + m;
   questionBlock.innerHTML = `${n} + ${m} = `;
 }
@@ -110,9 +110,13 @@ function createMultiplicationQuestion() {
 function createDivisionQuestion() {
   blankify();
   const n = getRandomInt(2, 12);
-  const m = getRandomInt(2, n);
-  calc = n * m;
-  questionBlock.innerHTML = `${calc} / ${n} = `;
+  const m = getRandomInt(2, 12);
+  
+  const dividend = n * m; 
+  
+  calc = m; 
+  
+  questionBlock.innerHTML = `${dividend} / ${n} = `;
 }
 
 answerBlock.addEventListener("keypress", async function (e) {
