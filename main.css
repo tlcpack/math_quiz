@@ -3,7 +3,8 @@
 }
 
 body {
-	background: linear-gradient(-45deg, pink, lightblue, aquamarine);
+	/* background: linear-gradient(-45deg, pink, lightblue, aquamarine); */
+    background: red;
 	background-size: 700% 700%;
 	animation: gradient 3s ease infinite;
 }

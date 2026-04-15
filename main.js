@@ -100,6 +100,7 @@ function createSubtractionQuestion() {
   calc = n - m;
   questionBlock.innerHTML = `${n} - ${m} = `;
 }
+
 function createMultiplicationQuestion() {
   blankify();
   const n = getRandomInt(2, 13);
@@ -107,6 +108,7 @@ function createMultiplicationQuestion() {
   calc = n * m;
   questionBlock.innerHTML = `${n} x ${m} = `;
 }
+
 function createDivisionQuestion() {
   blankify();
   const n = getRandomInt(2, 12);
